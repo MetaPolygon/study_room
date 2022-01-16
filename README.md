@@ -1,2 +1,2 @@
 # study_room
-my study ".LOG"
+my study recode room
