@@ -1,7 +1,8 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-int* get_prime_list(int n, int* idx){
+
+int* get_prime_list(int n, int* idx) {
     bool *nums = (bool*)calloc(n + 1, sizeof(bool));
     *nums = *(nums + 1) = true;
     
@@ -15,7 +16,7 @@ int* get_prime_list(int n, int* idx){
                 }
     
     int *prime_list = (int*)calloc(cnt, sizeof(int));
-    for (int i = 2; i <= n; i++){
+    for (int i = 2; i <= n; i++) {
         if (*(nums + i) == false)
             *(prime_list + (*idx)++) = i;
     }
@@ -29,4 +30,5 @@ int main() {
     
     for(int i = 0; i < idx; i++)
         printf("%d ", *(prime_list + i));
+    free(prime_list);
 }
