@@ -18,7 +18,7 @@ void print_prime(const bit *bs, int n) {
 	for (bit i = 0; i <= (n / byteSize); i++)
 		for(bit j = 0; j < byteSize && j + (byteSize * i) <= n; j++)
 		    if (is_prime(bs, j + (byteSize * i)))
-				printf("%lu ", j+(byteSize * i));
+				printf("%lu ", j + (byteSize * i));
 }
 
 BIT get_prime_bit(int n) {
