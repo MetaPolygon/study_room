@@ -17,10 +17,10 @@ int* get_prime_list(int n, int* len) {
                 }
     
     int *prime_list = (int*)calloc(cnt, sizeof(int));
-    for (int i = 2; i <= n; i++) {
+    for (int i = 2; i <= n; i++)
         if (*(nums + i) == false)
             *(prime_list + (*len)++) = i;
-    }
+    
     free(nums);
     return prime_list;
 }
