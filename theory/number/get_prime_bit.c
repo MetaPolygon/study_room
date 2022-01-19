@@ -30,8 +30,8 @@ BIT get_prime_bit(int n) {
 	for (int i = 2; i * i <= n; i++)
 		if (is_prime(bs, i))
 			for (int j = i * i; j <= n; j += i)
-			    if (is_prime(bs, j))
-				    add(bs, j);
+				if (is_prime(bs, j))
+					add(bs, j);
 	return bs;
 }
 
