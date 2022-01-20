@@ -4,11 +4,11 @@
 #define byteSize (sizeof(bit) * 8)
 
 int is_prime(const bit *bs, int n) {
-    return !(*(bs + (n / byteSize)) & shift(n % byteSize));
+    return !(bs[n / byteSize] & shift(n % byteSize));
 }
 
 void add(bit *bs, int n) {
-    *(bs + (n / byteSize)) |= shift(n % byteSize);
+    bs[n / byteSize] |= shift(n % byteSize);
 }
 
 void print_prime(const bit *bs, int n) {
