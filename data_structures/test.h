@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #define swap(a, b) do{int t = a; a = b, b = t;}while(0)
-#define swap(type, a, b) do{type t = a; a = b, b = t;}while(0)
+#define swap_t(type, a, b) do{type t = a; a = b, b = t;}while(0)
 #define create_arr(type, n) (type*)calloc(n, sizeof(type))
 #define print_arr(arr, size) for(int i = 0; i < size; printf("%d ", arr[i++]))
 
