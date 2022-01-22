@@ -1,3 +1,5 @@
+//get_prime_list.c bit ver
+
 #define bit unsigned int
 #define BIT bit*
 #define shift(n) ((bit)1 << (n))
