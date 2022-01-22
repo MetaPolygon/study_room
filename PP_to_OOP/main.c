@@ -1,6 +1,6 @@
 #include "class.h"
 
 int main() {
-    likeClass *c = set(); 
-    printf("%d",c->test());
+    pLikeClass c = likeClass(2, 1, 2); 
+    c->printInfo();
 }
