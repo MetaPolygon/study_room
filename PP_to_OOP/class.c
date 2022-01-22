@@ -1,11 +1,21 @@
 #include "class.h"
 
-static int test(){
-    return 1;
+static void constructor();
+static void printInfo();
+
+static likeClass this = { //list of function_name or value
+    0, constructor, printInfo
+};
+
+static void constructor(int num) {
+    this.num = num;
 }
 
-static likeClass this = {test};
+static void printInfo() {
+    printf("{num  : %d}\n", this.num);
+}
 
-likeClass *set() {
+pLikeClass likeClass_ctor(int num, ...) {
+    constructor(num);
     return &this;
 }
