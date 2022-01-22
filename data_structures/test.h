@@ -12,7 +12,7 @@ void rand_set_arr(int *arr, int size, int mod){
     while(size--) arr[size] = rand() %mod +1;
 }
 
-const char* is_sorted(int *arr, int n){
+const char* is_sorted_s(int *arr, int n){
     int asc = 0, des = 0;
     for (int i = 0; i < n - 1; i++) {
         if (asc != 0 && des != 0)
