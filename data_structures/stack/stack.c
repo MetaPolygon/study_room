@@ -32,6 +32,7 @@ void print_stack(const pStack ps) {
         printf("%d ", ps->stack[i]);
     putchar(10);
 }
+
 void del(pStack ps) {
     if (ps->stack != NULL)
         free(ps->stack);
