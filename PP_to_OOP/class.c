@@ -15,7 +15,7 @@ static void printInfo() {
     printf("{num  : %d}\n", this.num);
 }
 
-pLikeClass likeClass_ctor(int num, ...) {
+pLikeClass likeClass_ctor(int num, ...) { // for "this pointer"
     constructor(num);
     return &this;
 }
