@@ -11,4 +11,4 @@ int is_empty(const pStack ps);
 int push(pStack ps, int val);
 int pop(pStack ps, int *val);
 void print_stack(const pStack ps);
-void del(pStack ps);
+void del_stack(pStack ps);
