@@ -5,7 +5,7 @@
 #define swap_t(type, a, b) do{type t = a; a = b, b = t;} while(0)
 #define create_arr(n) (int*)calloc(n, sizeof(int))
 #define create_arr_t(type, n) (type*)calloc(n, sizeof(type))
-#define print_arr(arr, size) for(int i = 0; i < size; printf("%d ", arr[i++]))
+#define print_arr(arr, size) for(int i = 0; i < size; printf("%2d%c", arr[i++], (i + 1) % 20 ? 32 : 10))
 
 void rand_set_arr(int *arr, int size, int mod){
     srand(time(NULL));
