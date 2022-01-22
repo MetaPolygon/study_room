@@ -33,7 +33,7 @@ void print_stack(const pStack ps) {
     putchar(10);
 }
 
-void del(pStack ps) {
+void del_stack(pStack ps) {
     if (ps->stack != NULL)
         free(ps->stack);
     ps->max = ps->top = 0;
