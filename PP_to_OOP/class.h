@@ -1,7 +1,11 @@
 #include <stdio.h>
+#define likeClass(parameter, ...) likeClass_ctor(parameter, __VA_ARGS__)
+//Variadic Macro
 
 typedef struct __likeClass{
-    int (*test)();
-}likeClass;
+    int num;
+    void (*constructor)();
+    void (*printInfo)();
+}likeClass, *pLikeClass;
 
-extern likeClass *set();
+extern pLikeClass likeClass_ctor(int, ...);
