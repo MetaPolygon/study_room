@@ -1,4 +1,4 @@
-const char* is_sorted(int *arr, int n){
+const char* is_sorted_s(int *arr, int n){
     int asc = 0, des = 0;
     for (int i = 0; i < n - 1; i++) {
         if (asc != 0 && des != 0)
@@ -13,7 +13,7 @@ const char* is_sorted(int *arr, int n){
 
 // order is '0', it means Ascending.
 // order is '1', it means Descending.
-const char* is_sorted(int *arr, int n, int order){
+const char* is_sorted_s(int *arr, int n, int order){
     int start = arr[0], end = arr[n - 1];
     for (int i = 0; i < n - 1; i++)
         if (order == 0 && arr[i] > arr[i + 1] || order == 1 && arr[i] < arr[i + 1])
