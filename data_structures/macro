@@ -1,6 +1,7 @@
 #define swap(a,b) do{int t = a; a = b, b = t;} while(0)
 #define swap_t(type, a, b) do{type t = a; a = n, b = t;} while(0)
 
-#define create_arr(type, n) (type*)calloc(n, sizeof(type))
+#define create_arr(n) (int*)calloc(n, sizeof(int))
+#define create_arr_t(type, n) (type*)calloc(n, sizeof(type))
 
 #define print_arr(arr, size) for(int i = 0; i < size; printf("%d ", arr[i++]))
