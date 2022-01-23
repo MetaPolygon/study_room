@@ -16,10 +16,10 @@ void rand_set_arr(int *arr, int size, int mod){
 const char* is_sorted_s(int *arr, int n){
     int asc = 0, des = 0;
     for (int i = 0; i < n - 1; i++) {
-        if (asc != 0 && des != 0)
-            return "Not sorted";
         if (arr[i] <= arr[i + 1]) asc++;
         else if (arr[i] >= arr[i + 1]) des++;
+        if (asc != 0 && des != 0)
+            return "Not sorted";
     }
     if (arr[0] == arr[n - 1])
         return "all same";
