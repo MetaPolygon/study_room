@@ -14,15 +14,13 @@ int is_full(const pStack s) { return s->top == s->max; }
 int is_empty(const pStack s) { return s->top == 0; }
 
 int push(pStack s, int val) {
-    if (is_full(s))
-        return -1;
+    if (is_full(s)) return -1;
     s->stack[s->top++] = val;
     return 0;
 }
 
 int pop(pStack s, int *val) {
-    if (is_empty(s))
-        return -1;
+    if (is_empty(s)) return -1;
     *val = s->stack[s->top--];
     return 0;
 }
