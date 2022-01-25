@@ -10,5 +10,6 @@ int is_full(const pStack s);
 int is_empty(const pStack s);
 int push(pStack s, int val);
 int pop(pStack s, int *val);
+int search(const pStack s, int val);
 void print_stack(const pStack s);
 void del_stack(pStack s);
