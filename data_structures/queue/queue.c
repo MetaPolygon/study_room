@@ -35,6 +35,13 @@ int de_queue(pQueue q, int *val) {
     }
 }
 
+int search(const pQueue q, int val) {
+    for (int i = 0, idx; i < q->cnt; i++)
+        if (q->queue[idx = (i + q->front) % q->max] == val)
+            return idx;
+    return -1;
+}
+
 void print_queue(const pQueue q) {
     for (int i = 0; i < q->cnt; i++)
         printf("%d ", q->queue[(i + q->front) % q->max]);
