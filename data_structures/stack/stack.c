@@ -25,7 +25,7 @@ int pop(pStack s, int *val) {
     return 0;
 }
 
-int search(pStack s, int val) {
+int search(const pStack s, int val) {
     for (int i = s->top - 1; i >= 0; i--)
         if (s->stack[i] == val)
             return i;
