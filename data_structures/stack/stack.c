@@ -25,13 +25,20 @@ int pop(pStack s, int *val) {
     return 0;
 }
 
+int search(pStack s, int val) {
+    for (int i = s->top - 1; i >= 0; i--)
+        if (s->stack[i] == val)
+            return i;
+    return -1;
+}
+
 void print_stack(const pStack s) {
     for (int i = 0; i < s->top; i++)
         printf("%d ", s->stack[i]);
     putchar(10);
 }
 
-void del_stack(pStack ps) {
+void del_stack(pStack s) {
     if (s->stack != NULL)
         free(s->stack);
     s->max = s->top = 0;
