@@ -1,5 +1,4 @@
-//default ver
-void quick_sort(int *arr, int left, int right) {
+static void quick(int *arr, int left, int right) {
     int pl = left, pr = right, pivot = arr[(pl + pr) / 2];
     while (pl <= pr) {
         while (arr[pl] < pivot) pl++;
@@ -9,6 +8,10 @@ void quick_sort(int *arr, int left, int right) {
             pl++, pr--;
         }
     }
-    if (left < pr) quick_sort(arr, left, pr);
-    if (pl < right) quick_sort(arr, pl, right);
+    if (left < pr) quick(arr, left, pr);
+    if (pl < right) quick(arr, pl, right);
+}
+
+void quick_sort(int *arr, int n) {
+    quick(arr, 0, n - 1);
 }
