@@ -3,12 +3,12 @@
 typedef struct __node {
     Data info;
     struct __node *next;
-}Node, pNode;
+}Node, *pNode;
 
 typedef struct __list {
     pNode head;
     pNode temp;
-}List, pList;
+}List, *pList;
 
 void initialize(pList list);
 pNode search(const pList list, const pNode node);
