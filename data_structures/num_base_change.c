@@ -1,11 +1,15 @@
 int num_base_change(unsigned val, int n, char *num) {
     const char *std = "0123456789ABCDEF";
-    int idx = 0;
-    if (val == 0) num[idx++] = '0';
+    int len = 0;
+    if (val == 0) num[len++] = '0';
     else 
         while (val) {
-            num[idx++] = std[val % n];
+            num[len++] = std[val % n];
             val /= n;
         }
-    return idx;
+    for (int i = 0; i < len / 2; i++) {
+        char temp = num[i];
+        num[i] = num[len - i - 1], num[len - i - 1] = temp;
+    }
+    return len;
 }
