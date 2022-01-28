@@ -69,7 +69,7 @@ void print_list(const pList list) {
 }
 
 void del(pList list) {
-    if (liss->head != NULL) {
+    if (list->head != NULL) {
         if (list->head == list->select) {
             free(temp);
             initailize(list);
