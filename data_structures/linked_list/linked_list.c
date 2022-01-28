@@ -29,9 +29,7 @@ static int find_tail(pList list) {
     return idx;
 }
 
-void initialize(pList list) {
-    list->head = list->select = list->tail = NULL;
-}
+void initialize(pList list) { list->head = list->select = list->tail = NULL; }
 
 //pNode search(const pList list, const pNode node);
 
@@ -44,6 +42,7 @@ int append(pList list, const pData data) {
     else list->select = list->tail = temp;
     return 0;
 }
+
 int insert(pList list, const pData data, int idx) {
     if (list->head == NULL || find_tail(list) < idx)
         return (int)append(list, data);
@@ -59,13 +58,31 @@ int insert(pList list, const pData data, int idx) {
     temp->next = after;
 }
 
-void print(const pList list);
+void print(const pData data) { printf("name : %s\nage  : %d\n", data->name, data->age); }
+
 void print_list(const pList list) {
     pNode temp = list->head;
     while (temp != NULL) {
-        printf("%d", (temp->info).age);
+        print(temp->info);
         temp = temp->next;
     }
 }
-void del(pList list);
-void del_list(pList list);
+
+void del(pList list) {
+    if (liss->head != NULL) {
+        if (list->head == list->select) {
+            free(temp);
+            initailize(list);
+        }
+        
+        pNode temp = list->head;
+        while (temp->next != list->select)
+            temp = temp->next;
+        
+        pNode after = list->select->next;
+        free(list->select);
+        temp->next = after;
+    }
+}
+void del_list(pList list) {
+}
