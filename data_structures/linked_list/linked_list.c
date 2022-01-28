@@ -7,50 +7,64 @@ static void set(pNode node, const pData data, const pNode next) {
 }
 
 static pNode alloc(const pData data) {
-    pNode temp = (pNode)calloc(1, sizeof(Node));
-    set(temp, data, NULL);
+    pNode temp;
+    if((temp = (pNode)calloc(1, sizeof(Node))) == NULL)
+        return NULL;
+    if (data != NULL)
+        set(temp, data, NULL);
     return temp;
 }
 
+static int find_tail(pList list) {
+    if (list->head == NULL)
+        return 0;
+    
+    pNode temp = list->head;
+    int idx = 1;
+    while (temp->next != NULL) {
+        temp = temp->next;
+        idx++;
+    }
+    list->tail = temp;
+    return idx;
+}
+
 void initialize(pList list) {
-    list->cnt = 0;
-    list->head = list->select = NULL;
+    list->head = list->select = list->tail = NULL;
 }
 
 //pNode search(const pList list, const pNode node);
 
-void append(pList list, const pData data) {
-    list->cnt++;
-    pNode temp = list->head;
-    if (temp != NULL) {
-        while (temp->next != NULL)
-            temp = temp->next;
-        list->select = temp->next = alloc(data);
-    }
-    list->select = temp = alloc(data);    
+int append(pList list, const pData data) {
+    pNode temp;
+    if (temp = alloc(data)) == NULL);
+        return -1;
+    if (list->head == NULL)
+        list->select = list->head = temp;
+    else list->select = list->tail = temp;
+    return 0;
 }
-void insert(pList list, const pData data, int idx) {
-    list->cnt++;
-    if (list->head == NULL || idx >= list->cnt) {
-        append(list, data);
-        return;
-    }
+int insert(pList list, const pData data, int idx) {
+    if (list->head == NULL || find_tail(list) < idx)
+        return (int)append(list, data);
     
+    pNode temp;
+    if ((temp = alloc(data)) == NULL)
+        return -1;
     list->select = list->head;
-    for (int i = 0; i < idx - 1; i++)
-        list->select = list->select->next;
-    pNode after = list->select->next->next; 
-    list->select->next = alloc(data);
-    list->select = list->select->next;
-    list->select->next = after;
-    
+    for (int i = 0; i < idx - 2; i++)
+        list->select = list->select = next;
+    pNode after = list->select->next;
+    list->select->next = temp;
+    temp->next = after;
 }
+
 void print(const pList list);
 void print_list(const pList list) {
     pNode temp = list->head;
-    for (int i = 0; i < list->cnt; i++) {
-        // printf("%d ", temp->info->age);
-        // //temp = temp->next;
+    while (temp != NULL) {
+        printf("%d", (temp->info).age);
+        temp = temp->next;
     }
 }
 void del(pList list);
