@@ -1,7 +1,17 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-typedef struct __Member {
+struct __Member {
   int no;
-} Member, *pMember;
+};
+typedef struct __Member Member, *pMember;
 
-void printMember(pMember member);
+enum __eMemberInfo
+{
+  ALL,
+  NO,
+};
+
+pMember scanMember(int flag);
+void printMember(const pMember member);
+int cmpMember(const pMember m1, const pMember m2, int flag);
