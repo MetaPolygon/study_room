@@ -34,6 +34,6 @@ void printMember(const pMember member)
 
 int cmpMember(const pMember m1, const pMember m2, int flag)
 {
-    if (flag == NO) return m1->no > m2->no ? 1 : 
-                          (m1->no < m2->no ? -1 : 0);
+  if (flag == NO) return m1->no > m2->no ? 1 : 
+                       (m1->no < m2->no ? -1 : 0);
 }
