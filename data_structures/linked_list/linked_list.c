@@ -51,8 +51,8 @@ int insertNode(pList list, const pMember member, int idx)
   if (list->head == NULL || findTail(list) < idx)
     return (int)appendNode(list, member);
     
-  pNode temp;
-  if ((temp = allocNode(member)) == NULL)
+  pNode temp = allocNode(member);
+  if (temp == NULL)
     return -1;
   list->select = list->head;
   for (int i = 0; i < idx - 2; i++)
