@@ -1,88 +1,105 @@
 #include <stdlib.h>
 #include "linked_list.h"
 
-static void set(pNode node, const pData data, const pNode next) {
-    node->info = data;
-    node->next = next;
+static void setNode(pNode node, const pMember member, const pNode next)
+{
+  node->member = member;
+  node->next = next;
 }
 
-static pNode alloc(const pData data) {
-    pNode temp;
-    if((temp = (pNode)calloc(1, sizeof(Node))) == NULL)
-        return NULL;
-    if (data != NULL)
-        set(temp, data, NULL);
+static pNode allocNode(const pMember member)
+{
+  pNode temp = calloc(1, sizeof(Node));
+  if(temp == NULL)
+    return NULL;
+    if (member != NULL)
+      setNode(temp, member, NULL);\
     return temp;
 }
 
-static int find_tail(pList list) {
-    if (list->head == NULL)
-        return 0;
-    
-    pNode temp = list->head;
-    int idx = 1;
-    while (temp->next != NULL) {
-        temp = temp->next;
-        idx++;
-    }
-    list->tail = temp;
-    return idx;
+static int findTail(pList list)
+{
+  if (list->head == NULL)
+    return 0;
+  pNode temp = list->head;
+  int idx = 1;
+  while (temp->next != NULL) {
+    temp = temp->next;
+      idx++;
+  }
+  list->tail = temp;
+  return idx;
 }
 
-void initialize(pList list) { list->head = list->select = list->tail = NULL; }
+void initialize(pList list, pNode node) { list->head = list->select = list->tail = node; }
 
 //pNode search(const pList list, const pNode node);
 
-int append(pList list, const pData data) {
-    pNode temp;
-    if (temp = alloc(data)) == NULL);
-        return -1;
-    if (list->head == NULL)
-        list->select = list->head = temp;
-    else list->select = list->tail = temp;
-    return 0;
+int appendNode(pList list, const pMember member)
+{
+  pNode temp = allocNode(member);
+  if (temp == NULL)
+    return -1;
+  if (list->head == NULL)
+    initialize(list, temp);
+  else list->select = list->tail = list->tail->next = temp;
+  return 0;
 }
 
-int insert(pList list, const pData data, int idx) {
-    if (list->head == NULL || find_tail(list) < idx)
-        return (int)append(list, data);
+int insertNode(pList list, const pMember member, int idx)
+{
+  if (list->head == NULL || findTail(list) < idx)
+    return (int)appendNode(list, member);
     
-    pNode temp;
-    if ((temp = alloc(data)) == NULL)
-        return -1;
-    list->select = list->head;
-    for (int i = 0; i < idx - 2; i++)
-        list->select = list->select = next;
-    pNode after = list->select->next;
-    list->select->next = temp;
-    temp->next = after;
+  pNode temp;
+  if ((temp = allocNode(member)) == NULL)
+    return -1;
+  list->select = list->head;
+  for (int i = 0; i < idx - 2; i++)
+    list->select = list->select->next;
+  pNode after = list->select->next;
+  list->select->next = temp;
+  temp->next = after;
 }
 
-void print(const pData data) { printf("name : %s\nage  : %d\n", data->name, data->age); }
+void printNode(const pNode node)
+{
+  printf("\n ----<node>----");
+  printMember(node->member);
+  puts(    " --------------");
 
-void print_list(const pList list) {
+}
+
+void printList(const pList list)
+{
+  pNode temp = list->head;
+  puts("\n=====[list]=====");
+  while (temp != NULL) {
+    printNode(temp);
+    temp = temp->next;
+  }
+  puts("\n================");
+}
+
+void delNode(pList list)
+{
+  if (list->head != NULL) {
+    if (list->head == list->select) {
+      free(list->head);
+      initialize(list, NULL);
+      return;
+    }
+        
     pNode temp = list->head;
-    while (temp != NULL) {
-        print(temp->info);
-        temp = temp->next;
-    }
+    while (temp->next != list->select)
+      temp = temp->next;
+    pNode after = list->select->next;
+    free(list->select);
+    temp->next = after;
+    findTail(list);
+  }
 }
 
-void del(pList list) {
-    if (list->head != NULL) {
-        if (list->head == list->select) {
-            free(temp);
-            initailize(list);
-        }
-        
-        pNode temp = list->head;
-        while (temp->next != list->select)
-            temp = temp->next;
-        
-        pNode after = list->select->next;
-        free(list->select);
-        temp->next = after;
-    }
-}
-void del_list(pList list) {
+void delList(pList list)
+{
 }
