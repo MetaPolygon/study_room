@@ -18,7 +18,7 @@ pMember scanMember(int flag)
   } else {
     puts(" [input Member info]");
     if (flag == ALL) {
-      for (int i = ALL; i <= NO; i++)
+      for (int i = ALL + 1; i <= NO; i++)
         __scanMember(temp, i);
     } else __scanMember(temp, flag);
   }
