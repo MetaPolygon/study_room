@@ -57,14 +57,32 @@ int insertNode(pList list, const pMember member, int idx)
   	for (int i = 0; i < idx - 2; i++)
       list->select = list->select->next;
     pNode after = list->select->next;
+    if (idx == 1) {
+      after = list->head;
+      list->select = list->head = temp;
+      temp->next = after;
+      return 0;
+    }
     list->select->next = temp;
     temp->next = after;
+    list->select = list->select->next;
     return 0;
   }
   return -1;
 }
 
-//pNode search(const pList list, const pNode node);
+pNode searchNode(const pList list, const pMember member)
+{
+  pNode temp = list->head;
+  while (temp != NULL) {
+    if (cmpMember(member, temp->member, NO) == 0) {
+      list->select = temp;
+      break;
+    }
+    temp = temp->next;
+  }
+  return temp;
+}
 
 void printNode(const pNode node)
 {
@@ -106,11 +124,10 @@ void deleteNode(pList list)
 
 void deleteList(pList list)
 {
-  while(list->head != NULL) {
-  	if (list->head != NULL) {
-  	  pNode after = list->head->next;
-  	  free(list->head);
-  	  list->head = after;
-	  }
-  }
+  while(list->head != NULL)
+    if (list->head != NULL) {
+      pNode after = list->head->next;
+      free(list->head);
+      list->head = after;
+    }
 }
