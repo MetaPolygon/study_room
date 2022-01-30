@@ -35,19 +35,19 @@ int main()
       case INSERT: 
         member = scanMember(ALL);
         if (menu == APPEND && appendNode(&list, member) == -1)
-          puts("fail append node");
+          puts("  fail append node");
         else if (menu == INSERT) {
           int idx;
-          printf("input index : ");
+          printf("  input index : ");
           scanf("%d", &idx);
           if (insertNode(&list, member, idx) == -1)
-            puts("fail insert node");
+            puts("  fail insert node");
         };
         break;
       case SEARCH:
         if (searchNode(&list, scanMember(NO)) != NULL)
           printNode(list.select);
-        else puts("No matching search node");
+        else puts("  No matching search node");
         break;
       case PRINT_LIST:
         printList(&list);
