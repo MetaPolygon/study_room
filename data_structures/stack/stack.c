@@ -52,8 +52,10 @@ int search(const pStack s, int val)
 
 void printStack(const pStack s)
 {
+  printf("\n\n  stack : ");
   for (int i = 0; i < s->top; i++)
     printf(" %d ", s->stack[i]);
+  putchar(10);
   putchar(10);
 }
 
