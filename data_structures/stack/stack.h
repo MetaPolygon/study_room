@@ -1,15 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct __stack {
-    int top, max;
-    int *stack;
-}Stack, *pStack;
+
+struct __Stack
+{
+  int top, max;
+  int *stack;
+};
+typedef struct __Stack Stack, *pStack;
 
 int initialize(pStack s, int max);
-int is_full(const pStack s);
-int is_empty(const pStack s);
+int valInput();
+int isFull(const pStack s);
+int isEmpty(const pStack s);
 int push(pStack s, int val);
 int pop(pStack s, int *val);
 int search(const pStack s, int val);
-void print_stack(const pStack s);
-void del_stack(pStack s);
+void printStack(const pStack s);
+void deleteStack(pStack s);
