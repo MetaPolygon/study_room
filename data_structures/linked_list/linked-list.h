@@ -12,10 +12,11 @@ typedef struct __List {
 } List, *pList;
 
 void initialize(pList list, pNode node);
-pNode searchNode(const pList list, const pNode node);
+
 int appendNode(pList list, const pMember member);
 int insertNode(pList list, const pMember member, int idx);
+pNode searchNode(const pList list, const pNode node);
 void printNode(const pNode node);
 void printList(const pList list);
-void delNode(pList list);
-void delList(pList list);
+void deleteNode(pList list);
+void deleteList(pList list);
