@@ -23,7 +23,7 @@ int main() {
   };
   Stack s;
   initialize(&s, SIZE);
-  int menu, pop_value;
+  int menu, temp;
   do {
     switch (menu = selectMenu(menu_list)) {
       case PUSH:
@@ -31,11 +31,13 @@ int main() {
         else puts("  Stack Full !");
         break;
       case POP:
-        if (isEmpty(&s) != 1) pop(&s, &pop_value);
+        if (isEmpty(&s) != 1) pop(&s, &temp);
         else puts("  Stack Empty !");
         break;
       case SEARCH:
-        search(&s, valInput());
+        if ((temp = search(&s, valInput())) != -1)
+          printf("  Search value in index : %d\n", temp);
+        else puts("  not in");
         break;
       case PRINT_STACK:
         printStack(&s);
