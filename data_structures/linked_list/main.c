@@ -6,7 +6,6 @@ enum __eMenu
   APPEND,
   INSERT,
   SEARCH,
-  PRINT_NODE,
   PRINT_LIST,
   DEL_NODE,
   DEL_LIST,
@@ -22,7 +21,6 @@ int main()
     "| Append Node           |",
     "| Insert Node           |",	
     "| Search Node           |",
-    "| Print Node Info       |",
     "| All Print Node Info   |",
     "| Delete Node           |",
     "| Delete List           |",
@@ -33,30 +31,30 @@ int main()
   initialize(&list, NULL);
   do {
     switch(menu = selectMenu(menu_list)) {
-      case APPEND: case INSERT: case SEARCH:
+      case APPEND:
+      case INSERT: 
         member = scanMember(ALL);
         if (menu == APPEND && appendNode(&list, member) == -1)
-          puts("노드 추가 실패");
+          puts("fail append node");
         else if (menu == INSERT) {
           int idx;
           printf("input index : ");
           scanf("%d", &idx);
           if (insertNode(&list, member, idx) == -1)
-            puts("노드 삽입 실패");
-          } else if (menu == SEARCH) {
-		    
-          }
+            puts("fail insert node");
+        };
         break;
-      case PRINT_NODE:
-        puts("no");
+      case SEARCH:
+        if (searchNode(&list, scanMember(NO)) != NULL)
+          printNode(list.select);
+        else puts("No matching search node");
         break;
       case PRINT_LIST:
         printList(&list);
         break;
       case DEL_NODE:
-        printf("  input 'No.' of delete node ? : ");
-        //searchNode(&list, scanMember(NO));
-        //deleteNode(&list);
+        searchNode(&list, scanMember(NO));
+        deleteNode(&list);
         break;
       case DEL_LIST: case EXIT:
         deleteList(&list);
