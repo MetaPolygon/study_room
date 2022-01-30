@@ -27,10 +27,12 @@ int main() {
   do {
     switch (menu = selectMenu(menu_list)) {
       case PUSH:
-        push(&s, valInput());
+        if (isFull(&s) != 1) push(&s, valInput());
+        else puts("  Stack Full !");
         break;
       case POP:
-        pop(&s, &pop_value);
+        if (isEmpty(&s) != 1) pop(&s, &pop_value);
+        else puts("  Stack Empty !");
         break;
       case SEARCH:
         search(&s, valInput());
