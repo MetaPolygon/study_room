@@ -28,7 +28,7 @@ pMember scanMember(int flag)
 void printMember(const pMember member)
 {
   printf("\n  --(member)--\n"
-           "  |  no : %d  |\n"
+           "  |  no : %3d|\n"
            "  ------------\n", member->no);
 }
 
