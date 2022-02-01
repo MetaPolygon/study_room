@@ -1,15 +1,14 @@
 #include "member.h"
 
-struct __BinaryNode
+struct __BNode
 {
   pMember member;
-  struct __BinaryNode *left;
-  struct __BinaryNode *right;
-}
-typedef struct __BinaryNode BNode, *pBNode;
+  struct __BNode *left, *right;
+};
+typedef struct __BNode BNode, *pBNode;
 
-pBNode searchNode(const pBNode node, const pMember member);
-pBNode insertNode(pBnode node, const pMember member);
-int delNode(pBnode node, const pMember member)
-void printTree(pBnode root);
-void freeTree(pBnode root);
+pBNode addBNode(pBNode node, const pMember member);
+pBNode searchBNode(pBNode node, const pMember member);
+void printTree(const pBNode root);
+int deleteBNode(BNode **root, const pMember member);
+void deleteTree(pBNode root);
