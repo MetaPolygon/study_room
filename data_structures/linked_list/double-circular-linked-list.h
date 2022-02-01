@@ -13,6 +13,10 @@ struct __DList
 typedef struct __DList DList, *pDList;
 
 void initialize(pDList list);
-void printDNode(const pDList list);
+int appendDNode(pDList list, pDNode node, const pMember member);
+int insertDNode(pDList list, const pMember member);
 pDNode searchDNode(pDList list, const pMember member);
+void printDNode(const pDList list);
 void printDList(const pDList list);
+void deleteDNode(pDList list);
+void deleteDList(pDList list);
