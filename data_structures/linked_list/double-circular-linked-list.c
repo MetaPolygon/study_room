@@ -27,7 +27,7 @@ void initialize(pDList list)
 int appendDNode(pDList list, pDNode node, const pMember member)
 {
   pDNode temp = allocDNode(), after;
-  if (temp != NULL) {
+  if (temp != NULL && member != NULL) {
     after = node->next;
     node->next = node->next->prev = temp;
     setDNode(temp, member, node, after);
