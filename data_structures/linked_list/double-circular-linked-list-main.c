@@ -36,6 +36,7 @@ int main()
         if (menu == APPEND && appendDNode(&list, list.head->prev, member) == -1)
           puts("  fail append node");
         else if (menu == INSERT) {
+          puts("  [input index]");
           if (searchDNode(&list, member) != NULL) {
             member = scanMember(ALL);
             if (insertDNode(&list, member) == -1)
