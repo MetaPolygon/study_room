@@ -1,4 +1,4 @@
-#include "binary-tree.h"
+#include "binary-search-tree.h"
 
 static pBNode allocBNode()
 {
