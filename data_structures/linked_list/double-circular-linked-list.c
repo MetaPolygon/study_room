@@ -1,8 +1,12 @@
 #include "double-circular-linked-list.h"
-
 static pDNode allocDNode()
 {
   return (pDNode)calloc(1, sizeof(DNode));
+}
+
+static int isEmpty(const pDList list)
+{
+  return list->head->next == list->head;
 }
 
 static void setDNode(pDNode node, const pMember member,
@@ -20,11 +24,26 @@ void initialize(pDList list)
   dummy->prev = dummy->next = dummy;
 }
 
-void printDNode(const pDList list)
+int appendDNode(pDList list, pDNode node, const pMember member)
 {
+  pDNode temp = allocDNode(), after;
+  if (temp != NULL) {
+    after = node->next;
+    node->next = node->next->prev = temp;
+    setDNode(temp, member, node, after);
+    list->select = temp;
+    return 0;
+  }
+  return -1;
+}
+
+int insertDNode(pDList list, const pMember member)
+{
+  if (isEmpty(list))
+    return appendDNode(list, list->head, member);
   if (list->select != NULL)
-    printMember(list->select->member);
-  else puts("  Node not Selected");
+    return appendDNode(list, list->select, member);
+  return -1;
 }
 
 pDNode searchDNode(pDList list, const pMember member)
@@ -35,7 +54,16 @@ pDNode searchDNode(pDList list, const pMember member)
       return list->select = temp;
     temp = temp->next;
   }
+  puts("  No matching search node");
+  list->select = NULL;
   return NULL;
+}
+
+void printDNode(const pDList list)
+{
+  if (list->select != NULL)
+    printMember(list->select->member);
+  else puts("  Node not Selected");
 }
 
 void printDList(const pDList list)
@@ -47,4 +75,21 @@ void printDList(const pDList list)
       temp = temp->next;
     }
   }
+}
+
+void deleteDNode(pDList list)
+{
+  if (list->select != list->head) {
+    pDNode temp = list->select;
+    temp->prev->next = temp->next;
+    temp->next->prev = temp->prev;
+    free(list->select);
+    list->select = temp->prev;
+  }
+}
+
+void deleteDList(pDList list)
+{
+  while(!isEmpty(list))
+    deleteDNode(list);
 }
