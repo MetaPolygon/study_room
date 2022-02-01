@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include "linked-list.h"
 
 static void setNode(pNode node, const pMember member, const pNode next)
@@ -34,40 +33,26 @@ void initialize(pList list, pNode node)
   list->head = list->select = list->tail = node;
 }
 
-int appendNode(pList list, const pMember member)
+int appendNode(pList list, pNode node, const pMember member)
 {
   pNode temp = allocNode(member);
   if (temp != NULL && member != NULL) {
-  	if (list->head != NULL)
-      list->select = list->tail = list->tail->next = temp;
-    else initialize(list, temp);
+  	if (list->head != NULL) {
+  	  temp->next = node->next;
+  	  list->select = node->next = temp;
+  	  findTail(list);
+  	} else initialize(list, temp);
     return 0;
   }
   return -1;
 }
 
-int insertNode(pList list, const pMember member, int idx)
+int insertNode(pList list, const pMember member)
 {
-  if (list->head == NULL || findTail(list) < idx)
-    return appendNode(list, member);
-    
-  pNode temp = allocNode(member);
-  if (temp != NULL && member != NULL) {
-    list->select = list->head;
-  	for (int i = 0; i < idx - 2; i++)
-      list->select = list->select->next;
-    pNode after = list->select->next;
-    if (idx == 1) {
-      after = list->head;
-      list->select = list->head = temp;
-      temp->next = after;
-      return 0;
-    }
-    list->select->next = temp;
-    temp->next = after;
-    list->select = list->select->next;
-    return 0;
-  }
+  if (list->head == NULL)
+    return appendNode(list, list->tail, member);
+  if (list->select != NULL)
+    return appendNode(list, list->select, member);
   return -1;
 }
 
@@ -75,12 +60,11 @@ pNode searchNode(const pList list, const pMember member)
 {
   pNode temp = list->head;
   while (temp != NULL) {
-    if (cmpMember(member, temp->member, NO) == 0) {
-      list->select = temp;
-      break;
-    }
+    if (cmpMember(member, temp->member, NO) == 0) 
+      return list->select = temp;
     temp = temp->next;
   }
+  puts("  No matching search node");
   return temp;
 }
 
@@ -106,8 +90,8 @@ void deleteNode(pList list)
 {
   if (list->head != NULL) {
     if (list->head == list->select) {
-      free(list->head);
-      initialize(list, NULL);
+      list->head = list->select->next;
+      free(list->select);
       return;
     }
         
