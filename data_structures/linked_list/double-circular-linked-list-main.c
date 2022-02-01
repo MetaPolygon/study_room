@@ -53,7 +53,7 @@ int main()
         if (searchDNode(&list, scanMember(NO)) != NULL)
           deleteDNode(&list);
         break;
-      case DEL_LIST: case EXIT:
+      case EXIT:
         deleteDList(&list);
         break;
     }
