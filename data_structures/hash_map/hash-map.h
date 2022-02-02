@@ -15,8 +15,9 @@ struct __ChainHash
 typedef struct __ChainHash ChainHash, *pChainHash;
 
 int initialize(pChainHash hash, int size);
-pNode searchNode(const pChainHash hash, const pMember member);
 int appendNode(pChainHash hash, const pMember member);
+pNode searchNode(const pChainHash hash, const pMember member);
+void printNode(const pNode node);
 void printTable(pChainHash hash);
 int deleteNode(pChainHash hash, const pMember member);
 void deleteTable(pChainHash hash);
