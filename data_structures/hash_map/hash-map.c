@@ -33,6 +33,18 @@ int initialize(pChainHash hash, int size)
   return -1;
 }
 
+int appendNode(pChainHash hash, const pMember member)
+{
+  int key = getKey(member->no, hash->size);
+  pNode temp;
+  if ((temp = allocNode()) != NULL) {
+    setNode(temp, member, hash->table[key]);
+    hash->table[key] = temp;
+    return 0;
+  }
+  return -1;
+}
+
 pNode searchNode(const pChainHash hash, const pMember member)
 {
   pNode temp = hash->table[getKey(member->no, hash->size)];
@@ -44,16 +56,11 @@ pNode searchNode(const pChainHash hash, const pMember member)
   return NULL;
 }
 
-int appendNode(pChainHash hash, const pMember member)
+void printNode(const pNode node)
 {
-  int key = getKey(member->no, hash->size);
-  pNode temp;
-  if ((temp = allocNode()) != NULL) {
-    setNode(temp, member, hash->table[key]);
-    hash->table[key] = temp;
-    return 0;
-  }
-  return -1;
+  printf("\n ----<node>----");
+  printMember(node->member);
+  puts(    " --------------");
 }
 
 void printTable(pChainHash hash)
