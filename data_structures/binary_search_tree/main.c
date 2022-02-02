@@ -34,6 +34,7 @@ int main()
       case SEARCH:
         if ((temp = searchBNode(root, scanMember(NO))) != NULL)
           printMember(temp->member);
+        else puts("  not found");
         break;
         
       case PRINT_TREE:
