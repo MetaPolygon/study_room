@@ -23,7 +23,7 @@ int main()
     "| All Print Node Info   |",
     "| Delete Node           |",
   };
-  int menu;
+  Menu menu;
   List list;
   pMember member;
   initialize(&list, NULL);
