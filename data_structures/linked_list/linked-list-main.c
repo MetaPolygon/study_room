@@ -30,22 +30,22 @@ int main()
   do {
     switch(menu = selectMenu(menu_list)) {
       case APPEND:
-      case INSERT: 
         member = scanMember(ALL);
-        if (menu == APPEND && appendNode(&list, list.tail, member) == -1)
+        if (appendNode(&list, list.tail, member) == -1)
           puts("  fail append node");
-        else if (menu == INSERT) {
-          if (searchNode(&list, member) != NULL) {
-            member = scanMember(ALL);
-            if (insertNode(&list, member) == -1)
-              puts("  fail insert node");
-          }
+        break;
+      case INSERT:
+        puts("  [input search no]");
+        member = scanMember(ALL);
+        if (searchNode(&list, member) != NULL) {
+          member = scanMember(ALL);
+          if (insertNode(&list, member) == -1)
+            puts("  fail insert node");
         }
         break;
       case SEARCH:
         if (searchNode(&list, scanMember(NO)) != NULL)
           printNode(list.select);
-        else 
         break;
       case PRINT_LIST:
         printList(&list);
