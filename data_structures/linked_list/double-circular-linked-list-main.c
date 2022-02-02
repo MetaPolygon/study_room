@@ -31,16 +31,17 @@ int main()
   do {
     switch(menu = selectMenu(menu_list)) {
       case APPEND:
-      case INSERT: 
         member = scanMember(ALL);
-        if (menu == APPEND && appendDNode(&list, list.head->prev, member) == -1)
+        if (appendDNode(&list, list.head->prev, member) == -1)
           puts("  fail append node");
-        else if (menu == INSERT) {
-          if (searchDNode(&list, member) != NULL) {
-            member = scanMember(ALL);
-            if (insertDNode(&list, member) == -1)
-              puts("  fail insert node");
-          }
+        break;
+      case INSERT:
+        puts("  [search no]");
+        member = scanMember(ALL);
+        if (searchDNode(&list, member) != NULL) {
+          member = scanMember(ALL);
+          if (insertDNode(&list, member) == -1)
+            puts("  fail insert node");
         }
         break;
       case SEARCH:
