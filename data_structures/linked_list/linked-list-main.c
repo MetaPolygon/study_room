@@ -35,7 +35,7 @@ int main()
           puts("  fail append node");
         break;
       case INSERT:
-        puts("  [input search no]");
+        puts("  [input search 'No']");
         member = scanMember(ALL);
         if (searchNode(&list, member) != NULL) {
           member = scanMember(ALL);
