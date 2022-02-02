@@ -35,6 +35,7 @@ int main()
         if (appendDNode(&list, list.head->prev, member) == -1)
           puts("  fail append node");
         break;
+          
       case INSERT:
         puts("  [input search 'No']");
         member = scanMember(ALL);
@@ -44,17 +45,22 @@ int main()
             puts("  fail insert node");
         }
         break;
+          
       case SEARCH:
         if (searchDNode(&list, scanMember(NO)) != NULL)
           printDNode(&list);
+        else puts("  not found");
         break;
+          
       case PRINT_LIST:
         printDList(&list);
         break;
+          
       case DEL_NODE:
         if (searchDNode(&list, scanMember(NO)) != NULL)
           deleteDNode(&list);
         break;
+          
       case EXIT:
         deleteDList(&list);
         break;
