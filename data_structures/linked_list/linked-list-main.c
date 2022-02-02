@@ -34,6 +34,7 @@ int main()
         if (appendNode(&list, list.tail, member) == -1)
           puts("  fail append node");
         break;
+        
       case INSERT:
         puts("  [input search 'No']");
         member = scanMember(ALL);
@@ -43,17 +44,22 @@ int main()
             puts("  fail insert node");
         }
         break;
+        
       case SEARCH:
         if (searchNode(&list, scanMember(NO)) != NULL)
           printNode(list.select);
+        else puts("  not found");
         break;
+        
       case PRINT_LIST:
         printList(&list);
         break;
+        
       case DEL_NODE:
         if (searchNode(&list, scanMember(NO)) != NULL)
           deleteNode(&list);
         break;
+        
       case EXIT:
         deleteList(&list);
         break;
