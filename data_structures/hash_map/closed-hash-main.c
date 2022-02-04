@@ -45,7 +45,7 @@ int main()
         break;
         
       case DEL_BUCKET:
-        deleteData(&hash_map, scanMember(NO));
+        deleteData(searchBucket(&hash_map, scanMember(NO)), DELETED)
         break;
         
       case EXIT:
