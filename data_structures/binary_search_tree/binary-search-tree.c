@@ -75,6 +75,7 @@ int deleteBNode(BNode **root, const pMember member)
   }
   temp = *select;
   *select = after;
+  free(temp->member);
   free(temp);
   return 0;
 }
