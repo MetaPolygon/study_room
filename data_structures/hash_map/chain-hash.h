@@ -19,5 +19,5 @@ int appendNode(pChainHash hash, const pMember member);
 pNode searchNode(const pChainHash hash, const pMember member);
 void printNode(const pNode node);
 void printTable(pChainHash hash);
-int deleteNode(pChainHash hash, const pMember member);
+void deleteNode(pChainHash hash, const pMember member);
 void deleteTable(pChainHash hash);
