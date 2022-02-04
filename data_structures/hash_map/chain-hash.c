@@ -76,7 +76,7 @@ void printTable(pChainHash hash)
   }
 }
 
-int deleteNode(pChainHash hash, const pMember member)
+void deleteNode(pChainHash hash, const pMember member)
 {
   int key = getKey(member->no, hash->size);
   pNode temp = hash->table[key];
@@ -85,12 +85,10 @@ int deleteNode(pChainHash hash, const pMember member)
     if (temp->member->no == member->no) {
       *ptemp = temp->next;
       free(temp);
-      return 0;
     }
     ptemp = &temp->next;
     temp = temp->next;
   }
-  return -1;
 }
 
 void deleteTable(pChainHash hash)
