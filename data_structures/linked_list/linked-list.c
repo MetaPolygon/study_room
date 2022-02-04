@@ -99,6 +99,7 @@ void deleteNode(pList list)
     while (temp->next != list->select)
       temp = temp->next;
     pNode after = list->select->next;
+    free(list->select->member);
     free(list->select);
     list->select = NULL;
     temp->next = after;
