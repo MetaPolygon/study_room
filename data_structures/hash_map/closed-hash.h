@@ -4,7 +4,7 @@ enum eStatus
 {
   EMPTY,
   FULL,
-  DELETE,
+  DELETED,
 };
 typedef enum eStatus Status;
 
@@ -27,5 +27,5 @@ int appendData(pClosedHash hash, const pMember member);
 pBucket searchBucket(const pClosedHash hash, const pMember member);
 void printData(const pBucket bucket);
 void printTable(const pClosedHash hash);
-int deleteData(pClosedHash hash, const pMember member);
+void deleteData(pBucket bucket, Status status);
 void deleteTable(pClosedHash hash);
