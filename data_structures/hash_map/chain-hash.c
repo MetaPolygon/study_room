@@ -84,6 +84,7 @@ void deleteNode(pChainHash hash, const pMember member)
   while (temp != NULL) {
     if (temp->member->no == member->no) {
       *ptemp = temp->next;
+      free(temp->member);
       free(temp);
     }
     ptemp = &temp->next;
@@ -97,6 +98,7 @@ void deleteTable(pChainHash hash)
     pNode temp = hash->table[i];
     while (temp != NULL) {
       pNode after = temp->next;
+      free(temp->member);
       free(temp);
       temp = after;
     }
