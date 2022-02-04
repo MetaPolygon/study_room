@@ -5,11 +5,6 @@ static int getKey(int key, int size)
   return key % size;
 }
 
-static int reGetKey(int key, int size)
-{
-  return (key + 1) % size;
-}
-
 static pBucket allocBucket(int size)
 {
   return (pBucket)calloc(size, sizeof(Bucket));
@@ -33,52 +28,66 @@ int initialize(pClosedHash hash, int size)
   return -1;
 }
 
+int appendData(pClosedHash hash, const pMember member)
+{
+  if (searchBucket(hash, member) == NULL) {
+    int key = getKey(member->no, hash->size);
+    pBucket temp;
+    for (int i = 0; i < hash->size; i++) {
+      temp = &hash->table[key];
+      if (temp->status != FULL) {
+        setBucket(temp, member, FULL);
+        return 0;
+      }
+      key = getKey(key + 1, hash->size);
+      temp = &hash->table[key];
+    }
+  }
+  return -1;
+}
+
 pBucket searchBucket(const pClosedHash hash, const pMember member)
 {
   int key = getKey(member->no, hash->size);
-  pBucket temp = &hash->table[key];
-  for (int i = 0; temp->status != EMPTY && i < hash->size; i++) {
-    if (temp->status == FULL && temp->member->no == member->no)
-      return temp;
-    key = reGetKey(key, hash->size);
+  pBucket temp;
+  for (int i = 0; i < hash->size; i++) {
     temp = &hash->table[key];
+    if (temp->status == EMPTY) break;
+    else if (temp->status == FULL && temp->member->no == member->no)
+      return temp;
+    key = getKey(key + 1, hash->size);
   }
   return NULL;
 }
 
-int appendData(pClosedHash hash, const pMember member)
-{
-  int key = getKey(member->no, hash->size);
-  pBucket temp = &hash->table[key];
-  if (searchBucket(hash, member) == 0)
-    return -1;
-  for (int i = 0; i < hash->size; i++) {
-    if (temp->status == EMPTY || temp->status == DELETE) {
-      setBucket(temp, member, FULL);
-      return 0;
-    }
-    key = reGetKey(key, hash->size);
-    temp = &hash->table[key];
-  }
-  return (int)FULL;
-}
-
 void printData(const pBucket bucket)
 {
-  
+  printMember(bucket->member);
 }
 
 void printTable(const pClosedHash hash)
 {
-  
+  for (int i = 0; i < hash->size; i++) {
+    printf("  %3d : ", i);
+    if (hash->table[i].status == FULL)
+      printf("%3d\n", hash->table[i].member->no);
+    else puts(hash->table[i].status == EMPTY ? "EMPTY" : "DELETED");
+  }
 }
 
-int deleteData(pClosedHash hash, const pMember member)
+void deleteData(pBucket bucket, Status status)
 {
-  
+  if (bucket != NULL) {
+    bucket->status = status;
+    free(bucket->member);
+  }
 }
 
 void deleteTable(pClosedHash hash)
 {
-  
+  for (int i = 0; i < hash->size; i++) {
+    deleteData(&hash->table[i], EMPTY);
+  free(hash->table);
+  hash->size = 0;
+  }
 }
