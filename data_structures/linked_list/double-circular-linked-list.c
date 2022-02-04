@@ -83,6 +83,7 @@ void deleteDNode(pDList list)
     pDNode temp = list->select;
     temp->prev->next = temp->next;
     temp->next->prev = temp->prev;
+    free(list->select->member);
     free(list->select);
     list->select = temp->prev;
   }
