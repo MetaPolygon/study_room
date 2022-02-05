@@ -1,0 +1,20 @@
+/*
+  what is 'nCk' ?
+  The number of combinations for selecting 'K' subsets from a set of 'N' elements
+  is called binomial coefficients.
+  
+  
+  C(n, k)  =  nCk  =  P(n, k) / k!  =  n! / k! * (n - k)!
+           =  C(n, n - k)
+           =  C(n - 1, k - 1) + C(n - 1, k)
+           =  C(n + 1, k + 1) - C(n, k + 1)
+           
+ 'unsigned long long type' type ranges 0 ~ 18,446,744,073,709,551,615
+  20! =  2,432,902,008,176,640,000 is smaller than 'unsigned long long'
+  21! = 51,090,942,171,709,440,000 is large than 'unsigned long long'
+  
+  if 'N' is 21 ~ 30
+  use 'double' type
+  but it is not all-around because of its poor precision.
+  
+*/
