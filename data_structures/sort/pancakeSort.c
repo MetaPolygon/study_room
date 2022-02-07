@@ -2,7 +2,8 @@ static void flip(int *arr, int right)
 {
   int left = 0;
   while (left < right) {
-    
+    swap(arr[left], arr[right]);
+    left++, right--;
   }
 }
 
