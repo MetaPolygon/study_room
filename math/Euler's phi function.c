@@ -47,6 +47,7 @@ int eulerPhiFunc(int n)
   return euler + (n > 1 ? - (euler / n) : 0);
 }
 
+// return euelr phi function value list
 int* eulerArr(int n)
 {
   int size = n + 1;
