@@ -4,16 +4,21 @@ def isComposite(a, d, n, s) :
         if pow(a, 2**r*d, n) == n - 1 : return False
     return True
 
-_primes = [2, 3] + [n for n in range(int(1e10)**(1/2), 2) if MillerRabin(n)]
-
-def MillerRabin(n) :
-    if n <= 1 : return False
-    if n in _primes : return True
+def _MillerRabin(n) :
     if any(n % p == 0 for p in _primes) : return False
-    
     d = n - 1
     s = 0
     while d % 2 == 0 :
         d >>= 1
         s += 1
     return not any(isComposite(a, d, n, s) for a in [2, 3, 5, 7, 11, 13, 17, 19])
+
+_primes = [2, 3]
+_primes += [n for n in range(5, 1000, 2) if _MillerRabin(n)]
+
+def MillerRabin(n) :
+    if n <= 1 : return False
+    if n in _primes : return True
+    if any(n % p == 0 for p in _primes) : return False
+    if n == 3215031751: return False
+    return _MillerRabin(n)
