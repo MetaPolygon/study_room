@@ -1,9 +1,13 @@
+
+
 def isComposite(a, d, n, s) :
     if a >= n : return False
     if pow(a, d, n) == 1 : return False
     for r in range(s) :
         if pow(a, pow(2, r) * d, n) == n - 1 : return False
     return True
+
+_primes = (2, 3, 5, 7, 11, 13, 17, 19, 23, 61)
 
 def MillerRabin(n) :
     if n < 2 : return False
@@ -12,4 +16,4 @@ def MillerRabin(n) :
     while d % 2 == 0 :
         d >>= 1
         s += 1
-    return not any(isComposite(a, d, n, s) for a in [2, 3, 5, 7, 11, 13, 17, 19])
+    return not any(isComposite(a, d, n, s) for a in _primes)
