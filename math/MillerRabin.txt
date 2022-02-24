@@ -1,5 +1,3 @@
-
-
 def isComposite(a, d, n, s) :
     if a >= n : return False
     if pow(a, d, n) == 1 : return False
