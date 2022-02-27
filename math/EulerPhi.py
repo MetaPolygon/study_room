@@ -24,8 +24,9 @@
   https://www.geeksforgeeks.org/eulers-totient-function/
 '''
 
-// 모든 합성수는 그 수의 제곱근 이하의 약수를 적어도 한 개 가진다.
-// default ver
+# 모든 합성수는 그 수의 제곱근 이하의 약수를 적어도 한 개 가진다.
+
+# default ver
 def EulerPhi(n) :
     euler = n
     prime = 2
@@ -35,8 +36,10 @@ def EulerPhi(n) :
             while n % prime == 0 : n //= prime
         prime += 1
     return euler if n == 1 else euler // n * (n - 1)  
-// 만약 n이 소수이거나, n이 sqrt(n)보다 큰 약수를 가지는 경우(최대 1번)
-      
+
+  #만약 n이 소수이거나, n이 sqrt(n)보다 큰 약수를 가지는 경우(최대 1번)
+
+# simple ver
 def EulerPhi(n) :
     euler = n
     prime = 2
@@ -46,20 +49,13 @@ def EulerPhi(n) :
             while n % prime == 0 : n //= prime
         prime += 1
     return euler if n == 1 else euler - euler // n
-'''
-int* eulerArr(int n)
-{
-  int size = n + 1;
-  int *temp = (int*)malloc(size * sizeof(int));
-  for (int i = 0; i < size; ++i) temp[i] = i;
-  for (int i = 2; i < size; ++i)
-    if (temp[i] == i) 
-      for (int j = i; j < size; j += i)
-        temp[j] = temp[j] / i * (i - 1);
-
-  int *euler_arr = (int*)malloc(n * sizeof(int));
-  memcpy(euler_arr, temp + 1, sizeof(int) * n);
-  free(temp);
-  return euler_arr;
-}
-'''
+  
+#get EuelrPhi value List
+def EulerPhiList(n) :
+    eulerList = [i for i in range(1, n + 1)]
+    for i in range(2, n + 1) :
+        if eulerList[i - 1] == i :
+            for j in range(i, n + 1, i) :
+                eulerList[j - 1] -= eulerList[j - 1] // i
+    return eulerList
+print(EulerPhiList(20))
