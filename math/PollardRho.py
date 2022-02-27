@@ -1,3 +1,6 @@
+'''
+O(sqrt(P)) <= O(N^¼)
+'''
 from math import gcd
 from random import randint
 
