@@ -51,11 +51,11 @@ def EulerPhi(n) :
     return euler if n == 1 else euler - euler // n
   
 #get EuelrPhi value List
+# ϕ(n) == eulerList[n]
 def EulerPhiList(n) :
-    eulerList = [i for i in range(1, n + 1)]
+    eulerList = [i for i in range(n + 1)]
     for i in range(2, n + 1) :
-        if eulerList[i - 1] == i :
-            for j in range(i, n + 1, i) :
-                eulerList[j - 1] -= eulerList[j - 1] // i
+        if eulerList[i] == i :
+            for j in range(i, n, i) :
+                eulerList[j] -= eulerList[j] // i
     return eulerList
-print(EulerPhiList(20))
