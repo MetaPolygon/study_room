@@ -24,42 +24,25 @@
   https://www.geeksforgeeks.org/eulers-totient-function/
 */
 
+// 모든 합성수는 그 수의 제곱근 이하의 약수를 적어도 한 개 가진다.
 // default ver
-int eulerPhiFunc(int n)                               // ϕ(n)
-{
-  int euler = n;
-  for (int prime = 2; prime * prime <= n; ++prime)    // 모든 합성수는 그 수의 제곱근 이하의 약수를 적어도 한 개 가진다.
-    if (n % prime == 0) {
-      euler = euler / prime * (prime - 1);
-      while (n % prime == 0) n /= prime;
-    }
-  return n == 1 ? euler : euler / n * (n - 1);        // 만약 n이 소수이거나, n이 sqrt(n)보다 큰 약수를 가지는 경우(최대 1번)
-}
-
-int eulerPhiFunc(int n)
-{
-  int euler = n;
-  for (int prime = 2; prime * prime <= n; ++prime)
-    if (n % prime == 0) {
-      euler -= euler / prime;
-      while (n % prime == 0) n /= prime;
-    }
-  return euler + (n > 1 ? - (euler / n) : 0);
-}
-
-// return euelr phi function value list
-int* eulerArr(int n)
-{
-  int size = n + 1;
-  int *temp = (int*)malloc(size * sizeof(int));
-  for (int i = 0; i < size; ++i) temp[i] = i;
-  for (int i = 2; i < size; ++i)
-    if (temp[i] == i) 
-      for (int j = i; j < size; j += i)
-        temp[j] = temp[j] / i * (i - 1);
-        
-  int *euler_arr = (int*)malloc(n * sizeof(int));
-  memcpy(euler_arr, temp + 1, sizeof(int) * n);
-  free(temp);
-  return euler_arr;
-}
+def EulerPhi(n) :
+    euler = n
+    prime = 2
+    while prime * prime <= n :                        
+        if n % prime == 0:
+            euler = euler // prime * (prime - 1)
+            while n % prime == 0 : n //= prime
+        prime += 1
+    return euler if n == 1 else euler // n * (n - 1)  
+// 만약 n이 소수이거나, n이 sqrt(n)보다 큰 약수를 가지는 경우(최대 1번)
+      
+def EulerPhi(n) :
+    euler = n
+    prime = 2
+    while prime * prime <= n :
+        if n % prime == 0:
+            euler -= euler // prime
+            while n % prime == 0 : n //= prime
+        prime += 1
+    return euler if n == 1 else euler - euler // n
