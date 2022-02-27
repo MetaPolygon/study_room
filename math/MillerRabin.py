@@ -1,6 +1,7 @@
 def isComposite(a, d, n, s) :
     if a >= n : return False
-    if pow(a, d, n) == 1 : return False
+    temp = pow(a, d, n)
+    if temp == 1 or temp == n - 1: return False
     for r in range(s) :
         if pow(a, pow(2, r) * d, n) == n - 1 : return False
     return True
