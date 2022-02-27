@@ -1,5 +1,5 @@
 
-/*
+'''
   Euler's phi function
   정수환에 대해 몫환의 가역원을 세는 함수이다.
   즉, n이 양의 정수일 때 ϕ(n)은 n과 서로소인 1부터 n이하의 정수의 개수와 같다.
@@ -22,7 +22,7 @@
   [reference]
   https://en.wikipedia.org/wiki/Euler%27s_totient_function
   https://www.geeksforgeeks.org/eulers-totient-function/
-*/
+'''
 
 // 모든 합성수는 그 수의 제곱근 이하의 약수를 적어도 한 개 가진다.
 // default ver
@@ -46,3 +46,20 @@ def EulerPhi(n) :
             while n % prime == 0 : n //= prime
         prime += 1
     return euler if n == 1 else euler - euler // n
+'''
+int* eulerArr(int n)
+{
+  int size = n + 1;
+  int *temp = (int*)malloc(size * sizeof(int));
+  for (int i = 0; i < size; ++i) temp[i] = i;
+  for (int i = 2; i < size; ++i)
+    if (temp[i] == i) 
+      for (int j = i; j < size; j += i)
+        temp[j] = temp[j] / i * (i - 1);
+
+  int *euler_arr = (int*)malloc(n * sizeof(int));
+  memcpy(euler_arr, temp + 1, sizeof(int) * n);
+  free(temp);
+  return euler_arr;
+}
+'''
