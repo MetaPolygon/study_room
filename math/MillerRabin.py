@@ -1,3 +1,9 @@
+'''
+A is count 'a'
+powmod() : O(N) → O(A log3 N)
+FFT() : O(N) → O(A log2 N)
+'''
+
 def isComposite(a, d, n, s) :
     if a >= n : return False
     temp = pow(a, d, n)
