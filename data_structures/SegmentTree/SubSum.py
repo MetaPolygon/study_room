@@ -41,4 +41,4 @@ if __name__ == "__main__" :
         index, value = map(int, input().split())
         update(1, 0, N - 1, index - 1, value)
         left, right = map(int, input().split())
-        print(SubSum(1, 0, N - 1, left - 1, right))
+        print(SubSum(1, 0, N - 1, left - 1, right - 1))
