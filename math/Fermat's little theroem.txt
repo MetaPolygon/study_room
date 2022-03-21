@@ -1,6 +1,10 @@
 '''
   Fermat's little theroem
   (1)   a^p ≡ p (mod p)
-  (2-1) a^(p-1) ≡ 1 (mod p)
-  (2-2) a^(p-2) ≡ a^(-1) (mod p)
+  (2-1) a^(p - 1) ≡ 1 (mod p)
+  (2-2) a^(p - 2) ≡ a^(-1) (mod p)
+  
+  -> combination
+  nCk = n! / k!(n - k)! = n! * (k!(n - k)!)^(-1)
+  (k!(n - k)!)^(p -  2) ≡ (k!(n - k)!)^(-1) (mod p)
 '''
