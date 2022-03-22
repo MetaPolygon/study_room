@@ -2,7 +2,7 @@ what is 'nCk' ?
     The number of combinations for selecting 'K' subsets from a set of 'N' elements
     is called binomial coefficients.
   
-    C(n, k) =  nCk  =  P(n, k) / k!  =  n! / k! * (n - k)!
+    C(n, k) =  nCk  =  P(n, k) / k!  =  n! / k! * (n - k)! = n! - (n - k)! / k!
             =  C(n, n - k)
             =  C(n - 1, k - 1) + C(n - 1, k)
             =  C(n + 1, k    ) - C(n, k - 1)
