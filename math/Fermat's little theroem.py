@@ -9,6 +9,14 @@
   (k!(n - k)!)^(p - 2) ≡ (k!(n - k)!)^(-1) (mod p)
   >>> nCk (mod p) =  n! * (k!(n - k)!)^(p - 2) (mod p)
   
-  nCk = n! - (n - k)! / k!
+  nCk 의 펙토리얼 연산 범위는 줄어들 수 있다.
+  nCk = (n! - (n - k)!) / k!
   >>> nCk (mod p) = (n! - (n - k)!) * (k!)^(-1) ≡ (n! - (n - k)!) * (k!)^(p - 2) (mod p)
+  
+  next -> Euler’s theorem
 '''
+
+# Using Fermat's little theroem
+def getModular(a, b, mod_prime) :
+    return a * pow(b, mod_prime - 2, mod_prime) % mod_prime
+
