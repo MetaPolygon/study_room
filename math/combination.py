@@ -1,4 +1,5 @@
-what is 'nCk' ?
+'''
+    what is 'nCk' ?
     The number of combinations for selecting 'K' subsets from a set of 'N' elements
     is called binomial coefficients.
   
@@ -12,3 +13,12 @@ what is 'nCk' ?
     n == k is return 1
     k == 1 is return n
     but it's a lot of recursive calls
+'''   
+    
+# Using Fermat's little theroem
+def combination(m, n, mod_prime) :
+    sub_fac = 1
+    for i in range(m, m - n, -1) : sub_fac = sub_fac * i % mod_prime
+    fac = 1
+    for i in range(n, 1, -1) : fac = fac * i % mod_prime
+    return sub_fac * pow(fac, mod_prime - 2, mod_prime) % mod_prime
