@@ -16,9 +16,9 @@
 '''   
     
 # Using Fermat's little theroem
-def combination(m, n, mod_prime) :
+def combination(n, k, mod_prime) :
     sub_fac = 1
-    for i in range(m, m - n, -1) : sub_fac = sub_fac * i % mod_prime
+    for i in range(n, n - k, -1) : sub_fac = sub_fac * i % mod_prime
     fac = 1
-    for i in range(n, 1, -1) : fac = fac * i % mod_prime
+    for i in range(k, 1, -1) : fac = fac * i % mod_prime
     return sub_fac * pow(fac, mod_prime - 2, mod_prime) % mod_prime
