@@ -1,7 +1,9 @@
 '''
-A is count 'a'
-powmod() : O(N) → O(A log3 N)
-FFT() : O(N) → O(A log2 N)
+  A is count 'a'
+  powmod() : O(N) → O(A log3 N)
+  FFT() : O(N) → O(A log2 N)
+  [reference]
+  https://ko.wikipedia.org/wiki/%EB%B0%80%EB%9F%AC-%EB%9D%BC%EB%B9%88_%EC%86%8C%EC%88%98%ED%8C%90%EB%B3%84%EB%B2%95
 '''
 
 def isComposite(a, d, n, s) :
