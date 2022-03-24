@@ -12,7 +12,7 @@
   [reference]
   https://ko.wikipedia.org/wiki/%EB%A4%BC%EC%B9%B4%EC%9D%98_%EC%A0%95%EB%A6%AC
 '''
-
+# Using Fermat's little theroem
 def combination(m, n, mod_prime) :
     sub_fac = 1
     for i in range(m, m - n, -1) : sub_fac = sub_fac * i % mod_prime
