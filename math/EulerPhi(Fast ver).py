@@ -1,8 +1,6 @@
 '''
   기존의 Euler Phi function은 모든 합성수 n 은 적어도 p|n 을 만족하는 sqrt(n)이하의 여러 p를 선형탐색했다.
   하지만, p들은 PollardRho, MillerRabin 알고리즘을 사용해 선형탐색 없이 미리 p들을 구하고, 이를 연산에 사용하면 연산시간을 줄일 수 있다.
-  [reference]
-  https://ko.wikipedia.org/wiki/%EB%B0%80%EB%9F%AC-%EB%9D%BC%EB%B9%88_%EC%86%8C%EC%88%98%ED%8C%90%EB%B3%84%EB%B2%95
 '''
 def EulerPhi(n) :
     euler = n
