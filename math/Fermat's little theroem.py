@@ -17,6 +17,7 @@
   next -> Euler’s theorem
 '''
 
+# = a^(-1)
 # Using Fermat's little theroem
 def FermatLittleTheroemModular(a, b, p) :
     return a * pow(b, p - 2, p) % p
