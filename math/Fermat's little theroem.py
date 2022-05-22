@@ -17,6 +17,6 @@
 '''
 
 # Using Fermat's little theroem
-def getModular(a, b, mod_prime) :
-    return a * pow(b, mod_prime - 2, mod_prime) % mod_prime
+def FermatLittleTheroemModular(a, b, p) :
+    return a * pow(b, p - 2, p) % p
 
