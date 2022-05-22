@@ -39,7 +39,7 @@ def gcd(a, b) :
 # ax + by = d
 # return (s, t) = (x, y) or (-1, -1)
 
-def exGCD(a, b) : 
+def exEuclid(a, b) : 
     def onTimeGCD(a, b, q) : return (b, a - q * b)
     d0, d1 = a, b
     s0, s1 = 1, 0
