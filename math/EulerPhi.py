@@ -15,7 +15,8 @@
   (6-1)   a^ϕ(n) ≡ 1 (mod n)              {gcd(m, n) = 1}
   (6-2)   a^ϕ(n) ≡ a^2ϕ(n) mod n
   (7)   ϕ(n)이 2의 거듭제곱수일 때, 정 n각형은 눈금없는 자와 컴퍼스로 작도할 수 있다.
-  (8)   n^ϕ(m) = n^2ϕ(m) (mod m)
+  (8)   n^ϕ(m) ≡ n^2ϕ(m) (mod m)
+  (9)   A^B ≡ A^(B mod ϕ(C)) (mod C)
   
   [reference]
   https://en.wikipedia.org/wiki/Euler%27s_totient_function
