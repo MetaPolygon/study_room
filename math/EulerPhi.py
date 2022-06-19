@@ -56,9 +56,16 @@ def EulerPhi(n) :
   ϕ(n) == eulerList[n], O(n log n)
 '''
 def EulerPhiList(n) :
-    eulerList = [i for i in range(n + 1)]
+    eulerList = [*range(n + 1)]
     for i in range(2, n) :
         if eulerList[i] == i :
             for j in range(i, n + 1, i) :
                 eulerList[j] -= eulerList[j] // i
+    return eulerList
+  
+def EulerPhiList(n) :
+    eulerList = [*range(n + 1)]
+    for i in range(1, n) :
+        for j in range(i + i, n + 1, i) :
+                eulerList[j] -= eulerList[i]
     return eulerList
