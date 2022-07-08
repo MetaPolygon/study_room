@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct _user{
-	char *name;
+typedef struct _user {
+    char *name;
 }User, *pUser;
 
 void setName(pUser user, char* name)
