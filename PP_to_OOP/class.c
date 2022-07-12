@@ -1,21 +1,26 @@
 #include "class.h"
 
-static void constructor();
-static void printInfo();
+pUser this;//last...
 
-static likeClass this = { //list of function_name or value
-    0, constructor, printInfo
-};
+static void _setAge(unsigned int);
+static void _printUserInfo();
 
-static void constructor(int num) {
-    this.num = num;
+pUser newUser(unsigned int age)
+{
+    this = malloc(sizeof(User));
+    this->self = this;
+    this->setAge = _setAge;
+    this->setAge(age);
+    this->printUserInfo = _printUserInfo;
+    return this;
 }
 
-static void printInfo() {
-    printf("{num  : %d}\n", this.num);
+static void _setAge(unsigned int age)
+{
+    this->age = age;
 }
 
-pLikeClass likeClass_ctor(int num, ...) { // for "this pointer"
-    constructor(num);
-    return &this;
+static void _printUserInfo()
+{
+    printf("age : %u\n", this->age);
 }
