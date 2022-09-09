@@ -2,6 +2,7 @@
 
 int main()
 {
-    pUser user = newUser(6, 180.0, 70.0);
+    pUser user = newUser("mike", 26, 178.4, 72.6);
     user->printUserInfo();
+    free(user);
 }
