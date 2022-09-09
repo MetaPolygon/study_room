@@ -10,7 +10,7 @@ static struct _user {
     float height;
     float weight;
     /*
-    static uInt age;        // wrong
+    static uInt age;       // wrong
     static float height;   // wrong
     static float weight;   // wrong
     struct member can't have a memory classification specifier.
