@@ -6,3 +6,14 @@ int main()
     user->printUserInfo();
     free(user);
 }
+
+/*
+output :
+
+-------[user info]-------
+  name   : mike
+  age    : 26
+  height : 178.40(cm)
+  weight : 72.60(kg)
+-------------------------
+*/
