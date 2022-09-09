@@ -20,11 +20,11 @@ static struct _user {
     void (*setAge)(uInt);
     void (*setHeight)(float);
     void (*setWeight)(float);
-    const char* (*getName)(void);
-    uInt (*getAge)(void);
-    float (*getHeight)(void);
-    float (*getWeight)(void);
-    void (*printUserInfo)(void);
+    const char* (*getName)();
+    uInt (*getAge)();
+    float (*getHeight)();
+    float (*getWeight)();
+    void (*printUserInfo)();
 }_user;
 
 typedef struct _user User, *pUser;
