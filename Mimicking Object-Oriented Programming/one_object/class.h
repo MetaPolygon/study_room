@@ -8,6 +8,13 @@ static struct _user {
     uInt age;
     double height;
     double weight;
+    /*
+    static uInt age;        // wrong
+    static double height;   // wrong
+    static double weight;   // wrong
+    struct member can't have a memory classification specifier.
+    so, access modifiers are difficult to make :(
+    */
     void (*setAge)(uInt);
     void (*setHeight)(double);
     void (*setWeight)(double);
