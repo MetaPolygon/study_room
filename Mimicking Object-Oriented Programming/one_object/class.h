@@ -3,7 +3,8 @@
 #include <string.h>
 
 typedef unsigned int uInt;
-typedef struct _user {
+
+static struct _user {
     uInt age;
     double height;
     double weight;
@@ -14,6 +15,8 @@ typedef struct _user {
     double (*getHeight)(void);
     double (*getWeight)(void);
     void (*printUserInfo)(void);
-}User, *pUser;
+}_user;
+
+typedef struct _user User, *pUser;
 
 extern pUser newUser(uInt age, double height, double weight);
