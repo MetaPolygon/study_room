@@ -1,17 +1,19 @@
-int upper_bound(int *arr, int n, int key) {
-    int pl = 0, pr = n - 1, pc;
-    while (pl < pr) {
-        if (arr[pc = (pl + pr) / 2] > key) pr = pc;
-        else pl = pc + 1;
+int upperBound(const int *arr, int right, int key)
+{
+    int left = 0, mid;
+    while (left < right) {
+        if (arr[mid = (left + right) / 2] > key) right = mid;
+        else left = mid + 1;
     }
-    return pr;
+    return right;
 }
 
-int lower_bound(int *arr, int n, int key) {
-    int pl = 0, pr = n - 1, pc;
-    while (pl < pr) {
-        if (arr[pc = (pl + pr) / 2] < key) pl = pc + 1;
-        else pr = pc;
+int lowerBound(const int *arr, int right, int key)
+{
+    int left = 0, mid;
+    while (left < right) {
+        if (arr[mid = (left + right) / 2] < key) left = mid + 1;
+        else right = mid;
     }
-    return pl;
+    return left;
 }
