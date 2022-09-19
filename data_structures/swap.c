@@ -7,7 +7,8 @@
 #define swap(a, b) {int t = a; a = b, b = t;}
 
 //function ver
-void swap(int a, int b){
+void swap(int a, int b)
+{
   int temp = a;
   a = b, b = temp;
 }
