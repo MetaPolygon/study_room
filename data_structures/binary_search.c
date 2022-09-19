@@ -1,4 +1,4 @@
-int binary_search(int *arr, int n, int key)
+int binarySearch(int *arr, int n, int key)
 {
     int left = 0, right = n - 1, mid;
     while (left <= right) {
