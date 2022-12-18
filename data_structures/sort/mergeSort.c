@@ -1,27 +1,25 @@
-static void merge(int *arr, int left, int right, int *bfr)
+static void __mergeSort(int *arr, int left, int right, int *buff)
 {
   if (left < right) {
-    int center = (left + right) / 2;
-    int arr_idx, sort_idx = left;
-    int bfr_idx = 0, bfr_last_idx = 0;
-    merge(arr, left, center, bfr);
-    merge(arr, center + 1, right, bfr);
-        
-    for (arr_idx = left; arr_idx <= center; arr_idx++)
-      bfr[bfr_last_idx++] = arr[arr_idx];
-    while (arr_idx <= right && bfr_idx < bfr_last_idx)
-      arr[sort_idx++] = (bfr[bfr_idx] <= arr[arr_idx]) ? bfr[bfr_idx++] : arr[arr_idx++];
-    while (bfr_idx < bfr_last_idx)
-      arr[sort_idx++] = bfr[bfr_idx++];
+    int mid = (left + right) / 2;
+    __mergeSort(arr, left, mid, buff);
+    __mergeSort(arr, mid + 1, right, buff);
+    
+    int idx = left, buff_p = 0;
+    while (idx <= mid) buff[buff_p++] = arr[idx++];
+    int sort_p = left, buff_idx = 0;
+    while (idx <= right && buff_idx < buff_p)
+      arr[sort_p++] = ((buff[buff_idx] <= arr[idx]) ? buff[buff_idx++] : arr[idx++]);
+    while (buff_idx < buff_p) arr[sort_p++] = buff[buff_idx++];
   }
 }
 
-int mergeSort(int *arr, int n)
+int mergeSort(int *arr, int size)
 {
-  int* bfr;
-  if ((bfr = calloc(n/2 + 1, sizeof(int))) == NULL)
+  int* buff;
+  if ((buff = calloc((size>>1) + 1, sizeof(int))) == NULL)
     return -1;
-  merge(arr, 0, n - 1, bfr);
-  free(bfr);
+  __mergeSort(arr, 0, size - 1, buff);
+  free(buff);
   return 0;
 }
