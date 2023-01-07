@@ -1,2 +1,2 @@
 # study_room
-The room where I post what I studied.
+공부한거 기록하는 곳
