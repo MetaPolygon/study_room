@@ -1,5 +1,5 @@
 '''
-    what is 'nCk' ?
+    'nCk'
     The number of combinations for selecting 'K' subsets from a set of 'N' elements
     is called binomial coefficients.
   
