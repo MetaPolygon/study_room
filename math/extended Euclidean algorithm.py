@@ -39,15 +39,17 @@ def gcd(a, b) :
 # ax + by = d
 # return (s, t) = (x, y) or (-1, -1)
 
-def exEuclid(a, b) : 
-    def onTimeGCD(a, b, q) : return (b, a - q * b)
-    d0, d1 = a, b
-    s0, s1 = 1, 0
-    t0, t1 = 0, 1
-    while d1 :
-        q = d0 // d1
-        d0, d1 = onTimeGCD(d0, d1, q)
-        s0, s1 = onTimeGCD(s0, s1, q)
-        t0, t1 = onTimeGCD(t0, t1, q)
-    return ((s0, t0), (s0 + b, t0 - a))[s0 <= 0] if d0 == 1 else (-1, -1)
-
+def EEA(a, b) :
+    def divmodForEEA(a, b, q) : return (b, a -q*b)
+    Q, R = a, b
+    x, next_x = 1, 0
+    y, next_y = 0, 1
+    while R :
+        q = Q // R
+        Q, R = divmodForEEA(Q, R, q)
+        x, next_x = divmodForEEA(x, next_x, q)
+        y, next_y = divmodForEEA(y, next_y, q)
+    if Q == 1 :
+        if x <= 0 : return (x + b, y - a)
+        return (x, y)
+    else : return (-1, -1) # error !
