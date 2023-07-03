@@ -5,6 +5,6 @@ void selectionSort(int *arr, int n)
     for (int j = i + 1; j < n; j++)
       if (arr[j] < arr[min_idx])
         min_idx = j;
-        swap(arr[i], arr[min_idx]);
+    swap(arr[i], arr[min_idx]);
   }
 }
